@@ -1,0 +1,398 @@
+library(readxl)
+Warning message:
+  package ‘readxl’ was built under R version 4.2.2 
+> Amazon_top100_bestselling_books_2009to2021 <- read_excel("C:/Users/user/Downloads/Amazon_top100_bestselling_books_2009to2021.xlsx")
+New names:
+  • `` -> `...1`
+> View(Amazon_top100_bestselling_books_2009to2021)
+> library(tidyverse)
+── Attaching packages ──────────────────────────────── tidyverse 1.3.2 ──
+✔ ggplot2 3.4.0      ✔ purrr   0.3.5 
+✔ tibble  3.1.8      ✔ dplyr   1.0.10
+✔ tidyr   1.2.1      ✔ stringr 1.4.1 
+✔ readr   2.1.3      ✔ forcats 0.5.2 
+── Conflicts ─────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+Warning messages:
+  1: package ‘tidyverse’ was built under R version 4.2.2 
+2: package ‘ggplot2’ was built under R version 4.2.2 
+3: package ‘tibble’ was built under R version 4.2.2 
+4: package ‘tidyr’ was built under R version 4.2.2 
+5: package ‘readr’ was built under R version 4.2.2 
+6: package ‘purrr’ was built under R version 4.2.2 
+7: package ‘dplyr’ was built under R version 4.2.2 
+8: package ‘stringr’ was built under R version 4.2.2 
+9: package ‘forcats’ was built under R version 4.2.2 
+> library(tidyr)
+> library(ggplot2)
+> library(dplyr)
+> dataset1 <- Amazon_top100_bestselling_books_2009to2021
+> 
+  > #check whether any missing values in the dataset
+  > is.na(dataset1)
+...1 price ranks title no_of_reviews ratings author cover_type
+[1,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[2,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[3,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[4,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[5,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[6,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[7,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[8,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[9,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[10,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[11,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[12,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[13,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[14,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[15,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[16,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[17,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[18,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[19,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[20,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[21,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[22,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[23,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[24,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[25,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[26,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[27,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[28,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[29,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[30,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[31,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[32,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[33,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[34,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[35,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[36,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[37,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[38,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[39,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[40,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[41,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[42,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[43,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[44,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[45,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[46,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[47,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[48,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[49,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[50,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[51,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[52,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[53,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[54,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[55,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[56,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[57,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[58,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[59,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[60,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[61,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[62,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[63,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[64,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[65,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[66,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[67,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[68,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[69,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[70,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[71,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[72,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[73,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[74,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[75,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[76,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[77,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[78,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[79,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[80,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[81,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[82,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[83,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[84,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[85,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[86,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[87,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[88,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[89,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[90,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[91,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[92,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[93,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[94,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[95,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[96,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[97,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[98,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[99,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+[100,] FALSE FALSE FALSE FALSE         FALSE   FALSE  FALSE      FALSE
+year genre
+[1,] FALSE FALSE
+[2,] FALSE FALSE
+[3,] FALSE FALSE
+[4,] FALSE FALSE
+[5,] FALSE FALSE
+[6,] FALSE FALSE
+[7,] FALSE FALSE
+[8,] FALSE FALSE
+[9,] FALSE FALSE
+[10,] FALSE FALSE
+[11,] FALSE FALSE
+[12,] FALSE FALSE
+[13,] FALSE FALSE
+[14,] FALSE FALSE
+[15,] FALSE FALSE
+[16,] FALSE FALSE
+[17,] FALSE FALSE
+[18,] FALSE FALSE
+[19,] FALSE FALSE
+[20,] FALSE FALSE
+[21,] FALSE FALSE
+[22,] FALSE FALSE
+[23,] FALSE FALSE
+[24,] FALSE FALSE
+[25,] FALSE FALSE
+[26,] FALSE FALSE
+[27,] FALSE FALSE
+[28,] FALSE FALSE
+[29,] FALSE FALSE
+[30,] FALSE FALSE
+[31,] FALSE FALSE
+[32,] FALSE FALSE
+[33,] FALSE FALSE
+[34,] FALSE FALSE
+[35,] FALSE FALSE
+[36,] FALSE FALSE
+[37,] FALSE FALSE
+[38,] FALSE FALSE
+[39,] FALSE FALSE
+[40,] FALSE FALSE
+[41,] FALSE FALSE
+[42,] FALSE FALSE
+[43,] FALSE FALSE
+[44,] FALSE FALSE
+[45,] FALSE FALSE
+[46,] FALSE FALSE
+[47,] FALSE FALSE
+[48,] FALSE FALSE
+[49,] FALSE FALSE
+[50,] FALSE FALSE
+[51,] FALSE FALSE
+[52,] FALSE FALSE
+[53,] FALSE FALSE
+[54,] FALSE FALSE
+[55,] FALSE FALSE
+[56,] FALSE FALSE
+[57,] FALSE FALSE
+[58,] FALSE FALSE
+[59,] FALSE FALSE
+[60,] FALSE FALSE
+[61,] FALSE FALSE
+[62,] FALSE FALSE
+[63,] FALSE FALSE
+[64,] FALSE FALSE
+[65,] FALSE FALSE
+[66,] FALSE FALSE
+[67,] FALSE FALSE
+[68,] FALSE FALSE
+[69,] FALSE FALSE
+[70,] FALSE FALSE
+[71,] FALSE FALSE
+[72,] FALSE FALSE
+[73,] FALSE FALSE
+[74,] FALSE FALSE
+[75,] FALSE FALSE
+[76,] FALSE FALSE
+[77,] FALSE FALSE
+[78,] FALSE FALSE
+[79,] FALSE FALSE
+[80,] FALSE FALSE
+[81,] FALSE FALSE
+[82,] FALSE FALSE
+[83,] FALSE FALSE
+[84,] FALSE FALSE
+[85,] FALSE FALSE
+[86,] FALSE FALSE
+[87,] FALSE FALSE
+[88,] FALSE FALSE
+[89,] FALSE FALSE
+[90,] FALSE FALSE
+[91,] FALSE FALSE
+[92,] FALSE FALSE
+[93,] FALSE FALSE
+[94,] FALSE FALSE
+[95,] FALSE FALSE
+[96,] FALSE FALSE
+[97,] FALSE FALSE
+[98,] FALSE FALSE
+[99,] FALSE FALSE
+[100,] FALSE FALSE
+[ reached getOption("max.print") -- omitted 1191 rows ]
+> 
+  > #Fix missing values in numeric data types with median imputation
+  > median(dataset1$price, na.rm=TRUE)
+[1] 12.1
+> median(dataset1$no_of_reviews, na.rm=TRUE)
+[1] 16845
+> median(dataset1$ratings, na.rm=TRUE)
+[1] 4.7
+> dataset1$price[is.na(dataset1$price)] <- median(dataset1$price, na.rm=TRUE)
+> dataset1$no_of_reviews[is.na(dataset1$no_of_reviews)] <- median(dataset1$no_of_reviews, na.rm=TRUE)
+> dataset1$ratings[is.na(dataset1$ratings)] <- median(dataset1$ratings, na.rm=TRUE)
+> 
+  > View(dataset1)
+> sum(is.na(dataset1$price))
+[1] 0
+> sum(is.na(dataset1$no_of_reviews))
+[1] 0
+> sum(is.na(dataset1$ratings))
+[1] 0
+> 
+  > 
+  > ## number of fiction and non fiction books
+  > book_num <- dataset1 %>% drop_na() %>% 
+  +     group_by(year, genre) %>% 
+  +     summarise(num = n()) %>% 
+  +     filter(genre == "Non Fiction" | genre == "Fiction")
+`summarise()` has grouped output by 'year'. You can override using the
+`.groups` argument.
+> View(book_num)
+> 
+  > ### average fiction and non fiction books reviews
+  > book_avg <- dataset1 %>% drop_na() %>% 
+  +     group_by(year, genre) %>% 
+  +     summarise(avg_rev = mean(no_of_reviews)) %>% 
+  +     filter(genre == "Non Fiction" | genre == "Fiction")
+`summarise()` has grouped output by 'year'. You can override using the
+`.groups` argument.
+> View(book_avg)
+> 
+  > ##Rating Distribution of Fiction & Non Fiction books
+  > 
+  > df_f <- data.frame(rating = subset(dataset1, genre == "Fiction")$ratings)
+> df_nf <- data.frame(rating = subset(dataset1, genre == "Non Fiction")$ratings)
+> df_f$genre <- "Fiction"
+> df_nf$genre <- "Non Fiction"
+> 
+  > df_bind <- rbind(df_f, df_nf)
+> View(df_bind)
+> 
+  > ## Average Fiction & Non Fiction books Prices
+  > 
+  > book_price <- dataset1 %>% drop_na() %>% 
+  +     group_by(year, genre) %>% 
+  +     summarise(avg_price = mean(price)) %>% 
+  +     filter(genre == "Non Fiction" | genre == "Fiction")
+`summarise()` has grouped output by 'year'. You can override using the
+`.groups` argument.
+> View(book_price)
+> 
+  > ##The best 10 highest rated of fiction book
+  > 
+  > book_f <- dataset1 %>% 
+  +     filter(genre == "Fiction") %>% 
+  +     group_by(title, author) %>% 
+  +     summarize(avg_rate = mean(ratings),
+                  +               avg_rev = mean(no_of_reviews)) %>% 
+  +     arrange(desc(avg_rate)) %>% 
+  +     ungroup() %>% 
+  +     slice(1:10)
+`summarise()` has grouped output by 'title'. You can override using the
+`.groups` argument.
+> 
+  > View(book_f)
+> 
+  > ##The best 10 highest rated of non fiction book
+  > 
+  > book_nf <- dataset1 %>% 
+  +     filter(genre == "Non Fiction") %>% 
+  +     group_by(title, author) %>% 
+  +     summarize(avg_rate = mean(ratings),
+                  +               avg_rev = mean(no_of_reviews)) %>% 
+  +     arrange(desc(avg_rate)) %>% 
+  +     ungroup() %>% 
+  +     slice(1:10)
+`summarise()` has grouped output by 'title'. You can override using the
+`.groups` argument.
+> 
+  > View(book_nf)
+> 
+  > 
+  > # is there any significant relationship between Price vs User Rating
+  > cor.test(dataset1$price, dataset1$ratings, method = "pearson")
+
+Pearson's product-moment correlation
+
+data:  dataset1$price and dataset1$ratings
+t = -3.9594, df = 1289, p-value = 7.925e-05
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ -0.16319853 -0.05538972
+sample estimates:
+       cor 
+-0.1096165 
+
+> ## is there any significant relationship between Review vs User Rating
+> 
+> cor.test(dataset1$no_of_reviews, dataset1$ratings, method = "pearson")
+
+	Pearson's product-moment correlation
+
+data:  dataset1$no_of_reviews and dataset1$ratings
+t = 6.3072, df = 1289, p-value = 3.896e-10
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+  0.1195969 0.2254557
+sample estimates:
+  cor 
+0.173026 
+
+> 
+  > ## VISUALIZATIONSS
+  > ggplot(book_num, aes(x = year,y = num, fill = genre )) +
+  +     geom_smooth() +
+  +     scale_x_continuous(breaks = c(2009:2021)) +
+  +     theme(axis.text.x = element_text(angle = 90)) +
+  +     theme(plot.title = element_text(hjust = 0.5)) +
+  +     xlab("Year") + ylab("Number of books") +
+  +     labs(title = "Number of Fiction & Non Fiction Books")
+`geom_smooth()` using method = 'loess' and formula = 'y ~ x'
+> 
+  > 
+  > ggplot(book_avg, aes(x = year, y = avg_rev)) +
+  +     geom_line(aes(colour = genre), linewidth = 1.5) +
+  +     scale_x_continuous(breaks = c(2009:2021)) +
+  +     theme(plot.title = element_text(hjust = 0.5)) +
+  +     xlab("Year") + ylab("Average of review") +
+  +     labs(title = "Average Fiction & Non Fiction Books Reviews")
+> 
+  > 
+  > ggplot(df_bind, aes(rating, fill = genre)) +
+  +     geom_bar(position = "dodge") +
+  +     theme(plot.title = element_text(hjust = 0.5)) +
+  +     labs(title = "Rating Distribution of Fiction & Non Fiction Books") +
+  +     xlab("Rating") + ylab("Number of rating") +
+  +     xlim(3.1, 5.1)
+> 
+  > 
+  > ggplot(book_price, aes(x = year, y = avg_price)) +
+  +     geom_line(aes(colour = genre), linewidth = 1.5) +
+  +     scale_x_continuous(breaks = c(2009:2021)) +
+  +     theme(plot.title = element_text(hjust = 0.5)) +
+  +     xlab("Year") + ylab("Average of price") +
+  +     labs(title = "Average Fiction & Non Fiction Books Price")
+> 
+  > 
+  > #Best-selling non-fiction books with the most sales of 62 books in 2020.
+  > #The number of reviews increased sharply, especially for fiction genre #books, peaked in 2021 at an average of 70,006 reviews.
+  > #Average customer ratings range from 4.5 to 4.9.
+  > #The price of non-fiction books decreased sharply starting in 2014 from 18 #to 11 dollars in 2016.
+  > #There is no significant relationship in each variable of price, rating, #and reviews.
+  > #The fiction genre book "Brown Bear, Brown Bear, What Do You See?" by Bill #Martin is the highest in the aspect of rating and number of reviews.
+  > #The non-fiction genre book "A Promised Land" by Barack Obama is the #highest in the aspect of rating and number of reviews..
