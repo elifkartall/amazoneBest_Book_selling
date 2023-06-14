@@ -1,6 +1,7 @@
 # amazoneBest_Book_selling
 This project is about the books which is sold by amazone platforms. Dataset includes the data recorded between 2009-2021
 About the Data
+
 Amazon is known as the world’s best bookstore where you can buy all kinds all books in different formats, and this includes hardcover, paperbacks, e-books, and kindle.
 
 This data contains best-selling books on Amazon beginning from 2009 till 2021. This data was scrapped from the Amazon website and each year contains 100 best-selling books. The dataset has been cleaned and missing values that could be retrieved from the website has been filled. It only contains some missing values like the name of the books that are no more available in the store. Due to this, the prices, ratings, reviews, and paper cover types of thesis books are probably missing too.
